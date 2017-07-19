@@ -1,0 +1,51 @@
+1.	Compare Kafka & Flume
+2.	Which are the elements of Kafka?
+3.	What role ZooKeeper plays in a cluster of Kafka?
+4.	What is Kafka?
+5.	Why do you think the replications are dangerous in Kafka?
+6.	What major role a Kafka Producer API plays?
+7.	Distinguish between the Kafka and Flume?
+8.	Describe partitioning key?
+9.	Inside the manufacturer, when does the QueueFullException emerge?
+10.	Can Kafka be utilized without Zookeeper?
+11.	Elaborate Kafka architecture.
+12.	How to start a Kafka server?
+13.	What are consumers or users?
+14.	Describe an Offset?
+15.	What do you know about partitioning key?
+16.	Why is Kafka technology significant to use?
+
+Source:  https://intellipaat.com/interview-question/kafka-interview-questions/
+
+17.	Mention what is the benefits of Apache Kafka over the traditional technique?
+18.	Mention what is the meaning of broker in Kafka?
+19.	Mention what is the maximum size of the message does Kafka server can receive?
+20.	Explain what is Zookeeper in Kafka? Can we use Kafka without Zookeeper?
+21.	Explain how message is consumed by consumer in Kafka?
+22.	 Explain how you can improve the throughput of a remote consumer?
+23.	Explain how you can get exactly once messaging from Kafka during data production?
+24.	Explain how you can reduce churn in ISR? When does broker leave the ISR?
+25.	Why replication is required in Kafka?
+26.	What does it indicate if replica stays out of ISR for a long time?
+27.	Mention what happens if the preferred replica is not in the ISR?
+28.	Is it possible to get the message offset after producing?
+
+Source: https://career.guru99.com/top-14-kafka-interview-questions/
+
+29.	 Explain the role of offset.
+30.	What is a consumer group?
+31.	What is the role of the Zookeeper?
+32.	Is it possible to use Kafka without Zookeeper?
+33.	Explain the concept of Leader and Follower?
+34.	What roles do Replicas and ISR play?
+35.	Why are Replications critical in Kafka?
+36.	If a Replica stays out of the ISR for a long time, what does it signify?
+37.	What is a process for starting a Kafka Server?
+38.	How do you define partitioning key?
+39.	 In Producer when does QueueFullException occur?
+40.	Explain the role of Kafka Producer API?
+41.	What is the main difference between Kafka and Flume?
+
+Source: https://www.edureka.co/blog/interview-questions/top-apache-kafka-interview-questions-for-beginners/
+
+
