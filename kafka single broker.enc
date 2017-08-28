@@ -1,0 +1,71 @@
+TERMINAL 1    zookeeper
+su root 
+cloudera
+cd/Desktop/kafka
+		
+		starting zookeeper
+
+
+bin/zookeeper-server-start.sh config/zookeeper.properties
+ 
+TERMINAL 2     STARTING KAFKA SERVER
+
+su root 
+cloudera
+cd/Desktop/kafka
+
+		BROKER1
+
+
+bin/kafka-server-start.sh config/server.proper
+
+
+
+        TOPICS AND KAFKA PRODUCER
+
+TERMINAL 3
+
+su root 
+cloudera
+cd/Desktop/kafka
+
+bin/kafka-topics.sh --create --zookeeper localhost:2081 --replication-factor 1 --partitions 1 --topic top1
+
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic top1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+4
+
+		TOPICS AND KAFKA CONSOLE CONSUMER
+TERMINAL 4
+
+su root 
+cloudera
+cd/Desktop/kafka
+NEW VERSION
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic top1 --from -begining
+
+OLD VERSION
+bin/kafka-console-consumer.sh --zookeeper localhost:2081 --topic top1 --from -begining
+
+      LIST ALL EXISTED TOPICS
+bin/kafka-topics.sh --list --zookeeper localhost:2081
+
+         TO KNOW INFO OF TOPIC
+bin/kafka -topics.sh --describe --topic top1 --zookeeper localhost:2081
+
+
+
+       sites
+https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/
+
+
+
+

@@ -1,0 +1,54 @@
+package com.kafka.app;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+public class FileToKafka {
+
+	public static void main(String[] args)throws IOException {
+		Properties p=new Properties();
+		p.put("bootstrap.servers","localhost:9092");
+		p.put("ack","all");
+		p.put("recall",0);
+		p.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		p.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		Producer<String,String> prod=new KafkaProducer<String,String>(p);
+		FileInputStream fis=new FileInputStream("src/Emp");
+		InputStreamReader ips=new InputStreamReader(fis);
+		BufferedReader br=new BufferedReader(ips);
+		String rec="";
+		String key;
+		String val;
+		
+         while((rec=br.readLine())!=null)
+		{
+        String[] w=rec.split(",");
+        key=w[0];
+        val=rec;
+		ProducerRecord record=new ProducerRecord<String,String>("mytopic1",key,val);
+	    prod.send(record);
+		System.out.println(key+" Data Sent to Kafka ");
+	    }
+		br.close();
+		prod.close();
+		System.out.println("------Done---------");
+
+	}
+
+}
+
+
+Output
+---------
+100 Data Sent to Kafka 
+101 Data Sent to Kafka 
+102 Data Sent to Kafka 
+103 Data Sent to Kafka 
+------Done---------

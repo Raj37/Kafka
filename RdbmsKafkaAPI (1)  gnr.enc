@@ -1,0 +1,63 @@
+package KafkaAPI;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+
+
+public class Producer {
+	public static void main(String args[])throws Exception
+	{
+		Properties p=new Properties();
+		p.put("bootstrap.servers","localhost:9092");
+		p.put("buffer.memory",33524585);
+		p.put("ack","all");
+		p.put("recall",0);
+		p.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+		p.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+	    String topic ="mytopic";
+		KafkaProducer<String, String> prod=new KafkaProducer<String,String>(p);
+		try{
+		    Class.forName("com.mysql.jdbc.Driver");
+	        Connection con=DriverManager.getConnection("jdbc:mysql://localhost/gnr","root","cloudera");
+		    Statement stmt=con.createStatement();
+		    ResultSet rs=stmt.executeQuery("select deptno,dname from dept");
+		    System.out.println("-----------Started------------");
+		    while(rs.next())
+		    {
+		    	int deptno=rs.getInt("deptno");
+		    	String dname=rs.getString("dname");
+		    	String key=Integer.toString(deptno);
+		    	String value=deptno+" and "+dname;
+		    	
+		    	prod.send(new ProducerRecord<String,String>("dept",key,value));
+		    	
+		    	
+		    }
+		    System.out.println("-----------Sucess------------");
+		    
+		    
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		    
+	
+	/*	for(int i=100;i<2000;i++)
+		{
+			System.out.println(i);
+			prod.send(new ProducerRecord<String,String>(topic,Integer.toString(i),Integer.toString(i)));
+		}     */
+		
+		
+		prod.close();
+		
+		
+	}
+
+}
